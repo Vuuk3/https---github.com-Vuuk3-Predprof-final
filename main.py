@@ -109,8 +109,8 @@ def n6():
 
 def n7(s):
     ans, c, rooms = get_one_data(s.split('-'))
-    result = post_data(i, c, rooms)
-    write_db(i, c, rooms, result)
+    result = post_data(s, c, rooms)
+    write_db(s, c, rooms, result)
     for i in (ans):
         print(i)
     
@@ -124,8 +124,8 @@ def n8():
 
 
 create_db()
-n2()
-n3()
-n6()
-n7(input())
+#n2()
+#n3()
+#n6()
+#n7(input())
 n8()
