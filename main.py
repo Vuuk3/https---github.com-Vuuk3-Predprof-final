@@ -108,17 +108,24 @@ def n6():
         print()
 
 def n7(s):
-    for i in (get_one_data(s.split('-'))[0]):
+    ans, c, rooms = get_one_data(s.split('-'))
+    result = post_data(i, c, rooms)
+    write_db(i, c, rooms, result)
+    for i in (ans):
         print(i)
+    
+    
 
 def n8():
-    for i in get_data(mode=2):
+    for i in get_data(mode=1):
         for j in i[-1]:
             print(j)
         print()
 
+
+create_db()
 n2()
 n3()
 n6()
-n7(input)
+n7(input())
 n8()
