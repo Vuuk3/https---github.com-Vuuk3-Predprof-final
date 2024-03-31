@@ -3,7 +3,7 @@ function get_one_data(date) {
     var day = date[0], month = date[1], year = date[2];
     console.log(day, month, year);
     var data = fetch(url + '?day=' + day + '&month=' + month + '&year=' + year, 
-        {mode: 'no-cors',
+        {
         headers: {'X-Auth-Token': 'ppo_11_10974'}
         }
     )

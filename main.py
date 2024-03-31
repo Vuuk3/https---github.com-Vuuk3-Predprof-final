@@ -18,7 +18,6 @@ def create_db():
     con.close()
 
 def write_db(date, count, rooms, result):
-    print(date)
     rooms = list(map(str, rooms))
     rooms = ' '.join(rooms)
     con = sqlite3.connect('sqlite.db')
@@ -60,7 +59,6 @@ def get_one_data(date):
     data = get(url + f'?day={day}&month={month}&year={year}', headers={'X-Auth-Token': 'ppo_11_10974'}).json()['message']
     windows_for_flat = data['windows_for_flat']['data'] # Количество окон для каждого этажа в формате [3, 2, 1]
     windows = data['windows']['data'] # Словарь, где ключ - этаж, а значение - список состояний окон
-    print(windows)
     return build(windows_for_flat, windows)
 
 
