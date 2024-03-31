@@ -62,7 +62,7 @@ def get_one_data(date):
     return build(windows_for_flat, windows)
 
 
-def get_data():
+def get_data(mode=0):
     url = 'https://olimp.miet.ru/ppo_it_final'
     message = get(url + '/date', headers={'X-Auth-Token': 'ppo_11_10974'}).json()['message'] # Получение дат
     answers = []
@@ -70,8 +70,12 @@ def get_data():
         date = i.split('-')
         ans, c, rooms = get_one_data(date)
         result = post_data(i, c, rooms)
-        answers.append((result, ans))
-        write_db(i, c, rooms, result)
+        if mode == 2:
+            answers.append((result, c, rooms))
+        else:
+            answers.append((result, ans))
+        if mode == 1:
+            write_db(i, c, rooms, result)
     return answers
 
 def post_data(date, count, rooms): # Проверка на правильность
@@ -87,4 +91,34 @@ def post_data(date, count, rooms): # Проверка на правильнос�
 
 
 create_db()
-get_data()
+def n2():
+    for i in (get_one_data(['25', '01', '23'])[0]):
+        print(i)
+
+
+def n3():
+    for i in get_data():
+        for j in i[-1]:
+            print(j)
+        print()
+
+def n6():
+    for i in get_data(mode=2):
+        print(i)
+        print()
+
+def n7(s):
+    for i in (get_one_data(s.split('-'))[0]):
+        print(i)
+
+def n8():
+    for i in get_data(mode=2):
+        for j in i[-1]:
+            print(j)
+        print()
+
+n2()
+n3()
+n6()
+n7(input)
+n8()
